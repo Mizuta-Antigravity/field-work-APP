@@ -202,7 +202,7 @@ export default function Home() {
                     <h1 className={styles.title} style={{ marginBottom: 0 }}>フィールドワーク計画書作成システム</h1>
                     <Link href="/admin" style={{ fontSize: '0.9rem', color: '#4a5568', textDecoration: 'underline' }}>管理者ページ</Link>
                 </div>
-                <p className={styles.description}>関西大学北陽高等学校 総合的な探究の時間</p>
+                <p className={styles.description}>関西大学北陽高等学校 企×学協働プロジェクト「刀」</p>
 
                 {errorMsg && <div style={{ backgroundColor: '#fff5f5', padding: '1rem', borderRadius: '8px', border: '1px solid #fc8181', color: '#c53030', width: '100%', marginBottom: '2rem' }}>{errorMsg}</div>}
 

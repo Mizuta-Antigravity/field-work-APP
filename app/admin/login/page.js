@@ -24,7 +24,7 @@ export default function AdminLogin() {
         <div className={styles.adminContainer}>
             <div className={styles.loginCard}>
                 <h1 className={styles.title}>管理者ログイン</h1>
-                <p style={{ marginBottom: '2rem', color: '#718096' }}>フィールドワーク計画書の申請先管理</p>
+                <p style={{ marginBottom: '2rem', color: '#718096' }}>関西大学北陽高等学校 企×学協働プロジェクト「刀」<br />フィールドワーク計画書の申請先管理</p>
 
                 {error && <div className={styles.error}>{error}</div>}
 

@@ -180,7 +180,10 @@ export default function AdminDashboard() {
     return (
         <div className={styles.adminContainer}>
             <div className={styles.dashboardHeader}>
-                <h1 className={styles.title} style={{ marginBottom: 0 }}>管理者ダッシュボード</h1>
+                <div>
+                    <h1 className={styles.title} style={{ marginBottom: 0 }}>管理者ダッシュボード</h1>
+                    <p style={{ color: '#4a5568', marginTop: '0.2rem' }}>関西大学北陽高等学校 企×学協働プロジェクト「刀」</p>
+                </div>
                 <button onClick={handleLogout} className={styles.logoutButton}>ログアウト</button>
             </div>
 
