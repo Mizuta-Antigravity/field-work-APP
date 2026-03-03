@@ -198,9 +198,9 @@ export default function Home() {
     return (
         <div className={styles.container}>
             <main className={styles.main}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                    <h1 className={styles.title} style={{ marginBottom: 0 }}>フィールドワーク計画書作成システム</h1>
-                    <Link href="/admin" style={{ fontSize: '0.9rem', color: '#4a5568', textDecoration: 'underline' }}>管理者ページ</Link>
+                <div className={styles.headerFlex}>
+                    <h1 className={styles.title}>フィールドワーク計画書作成システム</h1>
+                    <Link href="/admin" className={styles.adminLink}>管理者ページ</Link>
                 </div>
                 <p className={styles.description}>関西大学北陽高等学校 企×学協働プロジェクト「刀」</p>
 
@@ -255,10 +255,10 @@ export default function Home() {
                                 <div className={styles.flexRow}>
                                     <div className={styles.formGroup} style={{ flex: 2 }}>
                                         <label className={styles.label}>メールアドレス (必須・再申請用)</label>
-                                        <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+                                        <div className={styles.emailInputGroup}>
                                             <input type="text" className={styles.input} required placeholder="yamada"
                                                 value={formData.groupLeader.emailLocal} onChange={e => handleLeaderChange('emailLocal', e.target.value)} />
-                                            <select className={styles.select} style={{ width: 'auto' }}
+                                            <select className={styles.select}
                                                 value={formData.groupLeader.emailDomain} onChange={e => handleLeaderChange('emailDomain', e.target.value)}>
                                                 <option value="@hokuyo2.kansai-u.ac.jp">@hokuyo2.kansai-u.ac.jp</option>
                                                 <option value="@gmail.com">@gmail.com</option>

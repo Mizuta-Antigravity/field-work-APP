@@ -271,7 +271,7 @@ export default function AdminDashboard() {
                     </button>
                 </div>
                 {applications.length > 0 ? (
-                    <div style={{ overflowX: 'auto' }}>
+                    <div className={styles.tableContainer}>
                         <table className={styles.table}>
                             <thead>
                                 <tr>
