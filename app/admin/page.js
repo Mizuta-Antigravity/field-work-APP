@@ -192,8 +192,8 @@ export default function AdminDashboard() {
             <div className={styles.card}>
                 <h2 className={styles.cardTitle}>新規管理者登録</h2>
                 <form onSubmit={handleAddAdmin}>
-                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                        <div className={styles.formGroup} style={{ flex: '1', minWidth: '200px' }}>
+                    <div className={styles.flexWrap}>
+                        <div className={styles.formGroup} style={{ flex: '1 1 200px' }}>
                             <label className={styles.label} htmlFor="name">名前</label>
                             <input
                                 type="text"
@@ -204,7 +204,7 @@ export default function AdminDashboard() {
                                 required
                             />
                         </div>
-                        <div className={styles.formGroup} style={{ flex: '2', minWidth: '250px' }}>
+                        <div className={styles.formGroup} style={{ flex: '2 1 300px' }}>
                             <label className={styles.label} htmlFor="email">メールアドレス</label>
                             <input
                                 type="email"
@@ -215,8 +215,8 @@ export default function AdminDashboard() {
                                 required
                             />
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'flex-end', paddingBottom: '1.5rem' }}>
-                            <button type="submit" className={styles.button} style={{ width: 'auto' }}>登録する</button>
+                        <div style={{ display: 'flex', alignItems: 'flex-end', paddingBottom: '1.5rem', flex: '1 1 150px' }}>
+                            <button type="submit" className={styles.button} style={{ width: '100%' }}>登録する</button>
                         </div>
                     </div>
                 </form>

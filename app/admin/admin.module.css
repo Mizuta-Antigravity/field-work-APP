@@ -14,9 +14,18 @@
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   max-width: 400px;
+  width: 100%;
+  /* Added */
   margin: 10vh auto;
   text-align: center;
   border: 1px solid #f1f5f9;
+}
+
+@media (max-width: 480px) {
+  .loginCard {
+    padding: 2rem 1.25rem;
+    margin: 5vh auto;
+  }
 }
 
 .title {
@@ -171,7 +180,7 @@
   font-size: 0.875rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .adminContainer {
     padding: 1.5rem 1rem;
   }
@@ -183,7 +192,8 @@
   }
 
   .logoutButton {
-    align-self: flex-end;
+    align-self: flex-start;
+    /* Changed from flex-end for better flow */
   }
 
   .card {
@@ -193,4 +203,20 @@
   .cardTitle {
     font-size: 1.125rem;
   }
+
+  .table th,
+  .table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+.flexWrap {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.flexWrap>div {
+  flex: 1;
 }

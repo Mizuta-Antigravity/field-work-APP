@@ -253,10 +253,10 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div className={styles.flexRow}>
-                                    <div className={styles.formGroup} style={{ flex: 2 }}>
+                                    <div className={styles.formGroup} style={{ flex: '2 1 300px' }}>
                                         <label className={styles.label}>メールアドレス (必須・再申請用)</label>
                                         <div className={styles.emailInputGroup}>
-                                            <input type="text" className={styles.input} required placeholder="yamada"
+                                            <input type="text" className={styles.input} required placeholder="yamada" autoComplete="off"
                                                 value={formData.groupLeader.emailLocal} onChange={e => handleLeaderChange('emailLocal', e.target.value)} />
                                             <select className={styles.select}
                                                 value={formData.groupLeader.emailDomain} onChange={e => handleLeaderChange('emailDomain', e.target.value)}>
@@ -267,14 +267,14 @@ export default function Home() {
                                                 <option value="other">直接入力</option>
                                             </select>
                                             {formData.groupLeader.emailDomain === 'other' && (
-                                                <input type="text" className={styles.input} required placeholder="@example.com"
+                                                <input type="text" className={styles.input} required placeholder="@example.com" autoComplete="off"
                                                     value={formData.groupLeader.customDomain} onChange={e => handleLeaderChange('customDomain', e.target.value)} />
                                             )}
                                         </div>
                                     </div>
-                                    <div className={styles.formGroup}>
+                                    <div className={styles.formGroup} style={{ flex: '1 1 200px' }}>
                                         <label className={styles.label}>連絡先 (xxx-xxxx-xxxx)</label>
-                                        <input type="text" className={styles.input} required placeholder="例: 090-1234-5678"
+                                        <input type="tel" className={styles.input} required placeholder="例: 090-1234-5678" autoComplete="off"
                                             value={formData.emergencyContact} onChange={e => handleInputChange('emergencyContact', e.target.value)} />
                                     </div>
                                 </div>
@@ -282,7 +282,7 @@ export default function Home() {
 
                             {/* グループメンバー */}
                             <div style={{ marginTop: '1rem' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                                     <h3 className={styles.memberTitle} style={{ margin: 0 }}>グループメンバー（リーダー以外）</h3>
                                     <button type="button" onClick={handleAddMember}
                                         style={{ padding: '0.3rem 0.8rem', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '0.85rem' }}
@@ -343,7 +343,7 @@ export default function Home() {
                                     value={formData.purpose} onChange={e => handleInputChange('purpose', e.target.value)} />
                             </div>
 
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                                 <h3 className={styles.memberTitle} style={{ margin: 0 }}>実施スケジュール</h3>
                                 <button type="button" onClick={handleAddSchedule}
                                     style={{ padding: '0.3rem 0.8rem', backgroundColor: '#3182ce', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '0.85rem' }}

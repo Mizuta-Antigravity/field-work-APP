@@ -114,6 +114,7 @@
 
 .flexRow>div {
     flex: 1;
+    min-width: 0;
 }
 
 .formGroup {
@@ -139,6 +140,14 @@
     color: #1e293b;
     transition: all 0.2s;
     background-color: #ffffff;
+    box-sizing: border-box;
+    min-width: 0;
+    /* Allow shrinking in flex */
+}
+
+.input[type="date"] {
+    min-height: 3rem;
+    /* Better touch target and space for iOS */
 }
 
 .input:focus,
@@ -153,11 +162,19 @@
     display: flex;
     gap: 0.5rem;
     align-items: stretch;
+    flex-wrap: wrap;
+    /* Added to prevent horizontal overflow */
+}
+
+.emailInputGroup input {
+    flex: 2;
+    /* Local part takes more space */
+    min-width: 120px;
 }
 
 .emailInputGroup select {
-    width: auto;
-    min-width: fit-content;
+    flex: 1;
+    min-width: 150px;
 }
 
 .textarea {
@@ -192,7 +209,27 @@
     box-shadow: none;
 }
 
-/* Mobile Responsiveness */
+/* Adjusted for iPad / Tablets */
+@media (max-width: 900px) {
+    .title {
+        font-size: 1.875rem;
+    }
+
+    .flexRow {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .emailInputGroup {
+        flex-direction: column;
+    }
+
+    .emailInputGroup select,
+    .emailInputGroup input {
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 0.75rem;
@@ -204,10 +241,6 @@
 
     .form {
         padding: 1.5rem;
-    }
-
-    .title {
-        font-size: 1.75rem;
     }
 
     .headerFlex {
@@ -222,19 +255,6 @@
 }
 
 @media (max-width: 640px) {
-    .flexRow {
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .emailInputGroup {
-        flex-direction: column;
-    }
-
-    .emailInputGroup select {
-        width: 100%;
-    }
-
     .sectionTitle {
         font-size: 1.25rem;
     }
@@ -242,6 +262,25 @@
     .memberCard {
         padding: 1rem;
     }
+
+    .title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Missing utility classes */
+.memberTitle {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #475569;
+    margin: 1.5rem 0 1rem 0;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
 }
 
 .checkboxLabel {
