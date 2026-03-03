@@ -181,8 +181,11 @@ export default function AdminDashboard() {
         <div className={styles.adminContainer}>
             <div className={styles.dashboardHeader}>
                 <div>
-                    <h1 className={styles.title} style={{ marginBottom: 0 }}>管理者ダッシュボード</h1>
-                    <p style={{ color: '#4a5568', marginTop: '0.2rem' }}>関西大学北陽高等学校 企×学協働プロジェクト「刀」</p>
+                    <h1 className={styles.title} style={{ marginBottom: 0 }}>管理者ダッシュボート</h1>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                        <p style={{ color: '#4a5568', margin: 0 }}>関西大学北陽高等学校 企×学協働プロジェクト「刀」</p>
+                        <span style={{ fontSize: '0.75rem', backgroundColor: '#edf2f7', padding: '0.2rem 0.5rem', borderRadius: '4px', color: '#4a5568', fontWeight: 'bold' }}>Ver 1.0.2</span>
+                    </div>
                 </div>
                 <button onClick={handleLogout} className={styles.logoutButton}>ログアウト</button>
             </div>
@@ -305,9 +308,6 @@ export default function AdminDashboard() {
                     </div>
                 )}
             </div>
-            <footer style={{ marginTop: '2rem', marginBottom: '1rem', color: '#94a3b8', fontSize: '0.75rem', textAlign: 'center' }}>
-                <p>Ver 1.0.2 - Responsive Update</p>
-            </footer>
         </div>
     );
 }

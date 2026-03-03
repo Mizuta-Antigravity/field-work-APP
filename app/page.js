@@ -199,10 +199,15 @@ export default function Home() {
         <div className={styles.container}>
             <main className={styles.main}>
                 <div className={styles.headerFlex}>
-                    <h1 className={styles.title}>フィールドワーク計画書作成システム</h1>
+                    <div>
+                        <h1 className={styles.title} style={{ marginBottom: '0.5rem' }}>フィールドワーク計画書作成システム</h1>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                            <p className={styles.description} style={{ margin: 0 }}>関西大学北陽高等学校 企×学協働プロジェクト「刀」</p>
+                            <span style={{ fontSize: '0.75rem', backgroundColor: '#edf2f7', padding: '0.2rem 0.5rem', borderRadius: '4px', color: '#4a5568', fontWeight: 'bold' }}>Ver 1.0.2</span>
+                        </div>
+                    </div>
                     <Link href="/admin" className={styles.adminLink}>管理者ページ</Link>
                 </div>
-                <p className={styles.description}>関西大学北陽高等学校 企×学協働プロジェクト「刀」</p>
 
                 {errorMsg && <div style={{ backgroundColor: '#fff5f5', padding: '1rem', borderRadius: '8px', border: '1px solid #fc8181', color: '#c53030', width: '100%', marginBottom: '2rem' }}>{errorMsg}</div>}
 
@@ -480,9 +485,6 @@ export default function Home() {
                     </form>
                 )}
             </main>
-            <footer style={{ marginTop: '2rem', marginBottom: '2rem', color: '#94a3b8', fontSize: '0.75rem', textAlign: 'center' }}>
-                <p>Ver 1.0.2 - Responsive Update</p>
-            </footer>
         </div>
     );
 }
