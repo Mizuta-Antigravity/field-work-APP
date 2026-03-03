@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Board</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Navigation / Header -->
+        <header class="glass-header">
+            <div class="brand-area">
+                <div class="brand-subtitle">関西大学北陽高等学校 企×学協働プロジェクト</div>
+                <h1 class="logo">「刀」Q-Board</h1>
+            </div>
+            <nav class="nav-links">
+                <button id="nav-list" class="nav-btn active">質問一覧</button>
+                <button id="nav-past" class="nav-btn">過去の質問</button>
+                <button id="nav-post" class="nav-btn primary-btn">+ 新規質問</button>
+                <button id="nav-admin" class="nav-btn admin-btn">⚙️ 管理者</button>
+            </nav>
+        </header>
+
+        <main class="content-area">
+            <!-- 1. List View (Active Questions) -->
+            <section id="view-list" class="view-section active">
+                <div class="app-intro glass-card"
+                    style="margin-bottom: 30px; text-align: center; padding: 25px; border-top: 3px solid var(--primary);">
+                    <h3 style="margin-bottom: 12px; color: var(--text-main); font-size: 1.25rem;">このアプリについて</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
+                        「刀」Q-Board はアンケート支援プラットフォームです。<br>
+                        バラバラになりがちなアンケート（質問）をここに集約することで、依頼する人はみんなに回答をお願いしやすくなり、<br>
+                        協力する人も一覧からサッと選んで回答しやすくなります。皆の探究活動をスムーズにするためにご活用ください。
+                    </p>
+                </div>
+                <div class="section-header">
+                    <h2>みんなの質問</h2>
+                    <p>現在回答受付中の質問を見ることができます</p>
+                </div>
+                <div id="questions-container" class="questions-grid">
+                    <!-- Cards will be injected here by JS -->
+                </div>
+                <div id="empty-state" class="empty-state hidden">
+                    <p>現在アクティブな質問はありません。最初の質問を投稿してみましょう！</p>
+                </div>
+            </section>
+
+            <!-- 1.5. Past List View -->
+            <section id="view-past" class="view-section">
+                <div class="section-header">
+                    <h2>過去の質問一覧</h2>
+                    <p>回答期限が過ぎた質問の一覧です (6ヶ月後に自動削除されます)</p>
+                </div>
+                <div id="past-questions-container" class="questions-grid past-grid">
+                    <!-- Cards will be injected here by JS -->
+                </div>
+                <div id="past-empty-state" class="empty-state hidden">
+                    <p>過去の質問はありません。</p>
+                </div>
+            </section>
+
+            <!-- 2. Post Form View -->
+            <section id="view-post" class="view-section">
+                <div class="section-header">
+                    <h2>質問を投稿する</h2>
+                    <p>必要な情報を入力して、質問ボードにUPしましょう</p>
+                </div>
+                <div class="form-card glass-card">
+                    <form id="post-form">
+                        <div class="form-group row">
+                            <div class="input-col">
+                                <label for="req-class">クラス <span class="required-mark">*</span></label>
+                                <input type="text" id="req-class" placeholder="例: 1-A" required>
+                            </div>
+                            <div class="input-col">
+                                <label for="req-number">出席番号 <span class="required-mark">*</span></label>
+                                <input type="number" id="req-number" placeholder="例: 15" required min="1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="input-col">
+                                <label for="req-name">氏名 <span class="required-mark">*</span></label>
+                                <input type="text" id="req-name" placeholder="名前を入力してください" required>
+                            </div>
+                            <div class="input-col">
+                                <label for="req-deadline">回答期限 <span class="required-mark">*</span></label>
+                                <input type="date" id="req-deadline" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="req-url">参考URL</label>
+                            <input type="url" id="req-url" placeholder="https://example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="req-question">質問文 <span class="required-mark">*</span></label>
+                            <textarea id="req-question" rows="5" placeholder="質問の内容を詳しく入力してください" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" id="btn-cancel-post" class="btn secondary-btn">キャンセル</button>
+                            <button type="submit" class="btn primary-btn">投稿する</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 3. Detail View -->
+            <section id="view-detail" class="view-section">
+                <button id="btn-back" class="btn text-btn">← 戻る</button>
+                <div id="detail-card" class="detail-card glass-card">
+                    <!-- Detail content injected by JS -->
+                </div>
+            </section>
+
+            <!-- 4. Admin View -->
+            <section id="view-admin" class="view-section">
+                <div class="section-header"
+                    style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                        <h2>管理者ダッシュボード</h2>
+                        <p>質問の自由な追加と、全ての質問の削除管理ができます</p>
+                    </div>
+                    <button id="btn-admin-logout" class="btn text-btn"
+                        style="color: var(--text-muted); font-size: 0.9rem;">[ ログアウト ]</button>
+                </div>
+
+                <div class="admin-grid">
+                    <!-- Admin Post Form -->
+                    <div class="form-card glass-card admin-panel">
+                        <h3 class="panel-title">質問を追加 (管理者)</h3>
+                        <form id="admin-post-form">
+                            <div class="form-group row">
+                                <div class="input-col">
+                                    <label for="admin-req-class">クラス</label>
+                                    <input type="text" id="admin-req-class" placeholder="例: 教員" required>
+                                </div>
+                                <div class="input-col">
+                                    <label for="admin-req-number">番号</label>
+                                    <input type="number" id="admin-req-number" value="0" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-req-name">氏名</label>
+                                <input type="text" id="admin-req-name" placeholder="管理者名を入力" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-req-deadline">回答期限</label>
+                                <input type="date" id="admin-req-deadline" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-req-url">参考URL</label>
+                                <input type="url" id="admin-req-url" placeholder="https://example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-req-question">質問文</label>
+                                <textarea id="admin-req-question" rows="3" placeholder="追加したい内容" required></textarea>
+                            </div>
+                            <div class="form-actions" style="margin-top: 20px;">
+                                <button type="submit" class="btn primary-btn admin-submit-btn">強制追加する</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Admin Question List -->
+                    <div class="glass-card admin-panel">
+                        <h3 class="panel-title">すべての質問管理 (現行 ＆ 過去)</h3>
+                        <div id="admin-questions-list" class="admin-list">
+                            <!-- List injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer
+            style="text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border-color); margin-top: 40px;">
+            v1.0.1 - スマホ・iPad対応版
+        </footer>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-modal" class="modal-overlay hidden">
+        <div class="modal-card glass-card">
+            <h3>管理者モード</h3>
+            <p>管理者専用ページにアクセスするためのパスワードを入力してください。</p>
+            <form id="admin-login-form">
+                <input type="password" id="admin-password" placeholder="パスワード" required>
+                <div id="admin-error" class="error-text hidden">パスワードが間違っています。</div>
+                <div class="modal-actions">
+                    <button type="button" id="btn-admin-cancel" class="btn secondary-btn">キャンセル</button>
+                    <button type="submit" class="btn primary-btn">認証</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">完了しました！</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
