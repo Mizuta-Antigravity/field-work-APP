@@ -480,6 +480,9 @@ export default function Home() {
                     </form>
                 )}
             </main>
+            <footer style={{ marginTop: '2rem', marginBottom: '2rem', color: '#94a3b8', fontSize: '0.75rem', textAlign: 'center' }}>
+                <p>Ver 1.0.2 - Responsive Update</p>
+            </footer>
         </div>
     );
 }

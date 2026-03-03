@@ -305,6 +305,9 @@ export default function AdminDashboard() {
                     </div>
                 )}
             </div>
+            <footer style={{ marginTop: '2rem', marginBottom: '1rem', color: '#94a3b8', fontSize: '0.75rem', textAlign: 'center' }}>
+                <p>Ver 1.0.2 - Responsive Update</p>
+            </footer>
         </div>
     );
 }
